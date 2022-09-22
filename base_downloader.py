@@ -33,16 +33,15 @@ class BaseDownloader:
     This method must be implemented by child classes
     '''
     def download(self, uri, filename):
-        raise 'Not implemented'
+        raise NotImplementedError
 
-    def run(self, uris):
-        for uri in uris:
-            try:
-                filename = self.generate_filename(uri)
-                self.download(uri, filename)
-            # Catch any unhandled exceptions and log here. Specific exceptions can be handled in individual Downloader as well.
-            except Exception as e:
-                self.clean_up(e, filename)
+    def run(self, uri):
+        try:
+            filename = self.generate_filename(uri)
+            self.download(uri, filename)
+        # Catch any unhandled exceptions and log here. Specific exceptions can be handled in individual Downloader as well.
+        except Exception as e:
+            self.clean_up(e, filename)
 
         
 
