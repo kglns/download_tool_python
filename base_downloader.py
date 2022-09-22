@@ -32,10 +32,10 @@ class BaseDownloader:
     '''
     This method must be implemented by child classes
     '''
-    def download(self, uri, filename):
+    def download(self, uri, filename, **kwargs):
         raise NotImplementedError
 
-    def run(self, uri):
+    def run(self, uri, **kwargs):
         try:
             filename = self.generate_filename(uri)
             self.download(uri, filename)
