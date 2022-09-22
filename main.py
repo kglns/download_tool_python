@@ -1,5 +1,5 @@
 import argparse
-from config import DOWNLOADERS, DEFAULT_DIR
+from config import DOWNLOADERS, DEFAULT_DIR, DEFAULT_RETRY
 from utils import extract_protocol
 
 parser = argparse.ArgumentParser(description='Utility tool for downloading files')
@@ -12,7 +12,7 @@ def main():
     downloader = DOWNLOADERS.get(protocol)
 
     if downloader:
-        print("Using {0} to download".format(downloader.__name__))
+        print("Using {0} to download".format(downloader))
         executor = downloader(default_dir=DEFAULT_DIR)
         executor.run(uri)
     else:
