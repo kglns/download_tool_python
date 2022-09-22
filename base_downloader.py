@@ -1,6 +1,5 @@
 import re
 import os
-from urllib3.exceptions import HTTPError
 
 class BaseDownloader:
 
@@ -9,7 +8,8 @@ class BaseDownloader:
 
     ''' 
     Process URI of form ${protocol}://uri/filename into uri-filename.
-    This will be common across all child classes, hence implemented here.
+    This will be common across most of the child classes, hence implemented here.
+    This can be overwritten in child class as well.
     '''
     def generate_filename(self, uri):
         
