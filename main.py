@@ -6,6 +6,7 @@ parser = argparse.ArgumentParser(description='Utility tool for downloading files
 parser.add_argument("--uri")
 args = parser.parse_args()
 uri = args.uri
+otherArgs = {} # we may pass in args other than URI in the future
 
 def main():
     protocol = extract_protocol(uri)
@@ -14,7 +15,7 @@ def main():
     if downloader:
         print("Using {0} to download".format(downloader))
         executor = downloader(default_dir=DEFAULT_DIR)
-        executor.run(uri)
+        executor.run(uri, otherArgs)
     else:
         print("Given protocol is not supported: {0}".format(protocol))
 
