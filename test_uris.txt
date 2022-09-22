@@ -1,0 +1,3 @@
+--uri ftp://ftp.us.debian.org:/debian/README
+--uri https://kaung.dev
+--uri sftp://sftpuser:${KEY}@kaung.dev:/test/hello.txt
